@@ -6,7 +6,7 @@
 
 namespace base64 {
 
-    inline std::string get_base64_chars() {
+    inline std::string __get_base64_chars() {
         static std::string base64_chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
                                           "abcdefghijklmnopqrstuvwxyz"
                                           "0123456789+/";
@@ -16,7 +16,7 @@ namespace base64 {
     std::string to_base64(std::string const &data) {
         int counter = 0;
         uint32_t bit_stream = 0;
-        const std::string base64_chars = get_base64_chars();
+        const std::string base64_chars = __get_base64_chars();
         std::string encoded;
         int offset = 0;
         for (unsigned char c: data) {
@@ -52,7 +52,7 @@ namespace base64 {
         uint32_t bit_stream = 0;
         std::string decoded;
         int offset = 0;
-        const std::string base64_chars = get_base64_chars();
+        const std::string base64_chars = __get_base64_chars();
         for (unsigned char c: data) {
             auto num_val = base64_chars.find(c);
             if (num_val != std::string::npos) {
@@ -69,7 +69,7 @@ namespace base64 {
                     bit_stream = 0;
                 }
             } else if (c != '=') {
-                return std::string();
+                return {};
             }
             counter++;
         }

@@ -9,9 +9,9 @@ Header only library.
 #include <iostream>
 
 int main() {
-  auto base64= to_base64("Hello, World!");
-  std::cout << base64 << '\n'; // SGVsbG8sIFdvcmxkIQ==
-  auto s = from_base64("SGVsbG8sIFdvcmxkIQ==");
+  auto base64_str = base64::to_base64("Hello, World!");
+  std::cout << base64_str << '\n'; // SGVsbG8sIFdvcmxkIQ==
+  auto s = base64::from_base64("SGVsbG8sIFdvcmxkIQ==");
   std::cout << s << '\n'; // Hello, World!
 }
 ```
